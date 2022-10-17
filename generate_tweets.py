@@ -3,6 +3,7 @@ import tensorflow as tf
 import config
 import pickle
 
+
 def predict_text(model, text, tokenizer, temperature=1):
     x = np.array(tokenizer.texts_to_sequences([text])) - 1
 
