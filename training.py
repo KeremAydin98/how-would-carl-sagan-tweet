@@ -14,9 +14,7 @@ train_dataset = window_data(dataset,window_size=101)
 # Load the model
 model = GRU_model()
 
-model_checkpoint = tf.keras.callbacks.ModelCheckpoint(".Models/best_model.h5", monitor="loss",save_best_only = True, save_weights_only=True)
-
-model.fit(train_dataset, epochs=20, steps_per_epoch = 2000)
+model.fit(train_dataset.repeat(), epochs=10000, steps_per_epoch = 50)
 
 # saving
 with open('./Models/tokenizer.pickle', 'wb') as handle:
