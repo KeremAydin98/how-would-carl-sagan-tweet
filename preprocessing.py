@@ -2,6 +2,7 @@ import tensorflow as tf
 import numpy as np
 import config
 
+
 def load_data(train_data_path):
 
     # Load the text file
@@ -18,6 +19,7 @@ def load_data(train_data_path):
     [train_sequences] = np.array(char_tokenizer.texts_to_sequences([text])) - 1
 
     return char_tokenizer, train_sequences
+
 
 def window_data(dataset,window_size=101):
 
