@@ -48,7 +48,11 @@ model = tf.keras.models.load_model("./Models/best_model.h5")
 with open('./Models/tokenizer.pickle', 'rb') as handle:
     char_tokenizer = pickle.load(handle)
 
-# Generating tweet and hashtags
+
+# Initialize Bert Keyphrase Extraction method
+kw_model = KeyBERT('distilbert-base-nli-mean-tokens')
+
+# Generating tweets and hashtags
 for i in range(5):
 
     # Generate the tweet of Carl Sagan
@@ -57,16 +61,15 @@ for i in range(5):
     # Spelling correction
     new_doc = TextBlob(generated_text)
 
-    generated_text = new_doc.correct()
+    generated_text = str(new_doc.correct())
 
-    # Bert Keyphrase Extraction method
-    kw_model = KeyBERT()
-
-    # Keyword generation
-    keywords = kw_model.extract_keywords(generated_text, keyphrase_ngram_range=(1,1))
+    # Keyword extraction
+    keywords = kw_model.extract_keywords(generated_text)
 
     # Write the tweets on text files
-    with open(f".Data/Tweet_{i}.txt","w") as f:
+    with open(f"Data/Tweet_{i}.txt","w") as f:
 
-        whole_tweet = generated_text + "@" + keywords[0] + "@" + keywords[1]
+        whole_tweet = generated_text + "@" + keywords[0][0] + "@" + keywords[1][0]
+        whole_tweet = whole_tweet.encode("ascii", "ignore")
+        whole_tweet = whole_tweet.decode()
         f.write(whole_tweet)
