@@ -1,5 +1,4 @@
 import string
-
 import numpy as np
 import tensorflow as tf
 import config
@@ -7,6 +6,7 @@ import pickle
 from keybert import KeyBERT
 import random
 from textblob import TextBlob
+
 
 def predict_text(model, text, tokenizer, temperature=1):
 
@@ -34,7 +34,7 @@ def generate_text(model, tokenizer):
     text = random.choice(string.ascii_lowercase)
 
     # Produce 279 letters to match the max letter limit of Twitter which is 280 characters
-    for _ in range(279):
+    for _ in range(250):
 
         text += predict_text(model, text, tokenizer)
 
