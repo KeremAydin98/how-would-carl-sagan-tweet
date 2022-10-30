@@ -1,6 +1,5 @@
 import os, string
 import PyPDF2
-import re
 
 all_text = ""
 # create file object variable
@@ -15,7 +14,7 @@ for file in os.listdir("Data/"):
         # This will store the number of pages of this pdf file
         x = pdfreader.numPages
 
-        for i in range(63,65):
+        for i in range(5,x-3):
 
             # create a variable that will select the selected number of pages
             pageobj = pdfreader.getPage(i)
@@ -25,8 +24,6 @@ for file in os.listdir("Data/"):
 
             text = text.encode("ascii","ignore")
             text = text.decode()
-
-            text = re.sub('[^A-Za-z0-9\s\n\t]+', '', text)
 
             all_text = all_text + "\n" + text
 
