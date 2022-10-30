@@ -4,4 +4,4 @@ data_path = "./Data"
 
 train_path = os.path.join(data_path,"all_text.txt")
 
-max_id = 70
+max_id = 95
