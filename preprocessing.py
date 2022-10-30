@@ -8,6 +8,7 @@ def load_data(train_data_path):
     # Load the text file
     with open(train_data_path,"r") as f:
         text = f.read()
+        text = text.replace("\n","")
 
     # Initialize the char tokenizer
     char_tokenizer = tf.keras.preprocessing.text.Tokenizer(lower=True, char_level=True)

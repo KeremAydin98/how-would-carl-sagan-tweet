@@ -6,6 +6,7 @@ import config
 import pickle
 from keybert import KeyBERT
 import random
+from textblob import TextBlob
 
 def predict_text(model, text, tokenizer, temperature=1):
 
@@ -52,6 +53,11 @@ for i in range(5):
 
     # Generate the tweet of Carl Sagan
     generated_text = generate_text(model, char_tokenizer)
+
+    # Spelling correction
+    new_doc = TextBlob(generated_text)
+
+    generated_text = new_doc.correct()
 
     # Bert Keyphrase Extraction method
     kw_model = KeyBERT()
