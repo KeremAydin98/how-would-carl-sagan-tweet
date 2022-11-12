@@ -30,4 +30,4 @@ Some of the tweets I generated can be seen below:
   <img src="https://user-images.githubusercontent.com/77073029/198904058-4128eb4c-0b48-4bcd-9948-7c60470b931e.png" />
 </p>
 
-They make sense in some way, however it can still be improved using more layers and more data. I was limited by my GPU capability.
+They make sense in some way, but it can still be improved using more layers and more data. I was limited by my GPU capability.
